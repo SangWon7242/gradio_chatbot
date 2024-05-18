@@ -16,7 +16,7 @@ def response(message, history):
     gpt_response = llm(history_langchain_format) # 사용자가 보낸 새로운 메시지
     return gpt_response.content
 
-gr.ChatInterface(
+demo = gr.ChatInterface(
   fn=response,
   textbox=gr.Textbox(placeholder="말걸어주세요..", container=False, scale=7),
   # 채팅창의 크기를 조절한다.
@@ -29,4 +29,7 @@ gr.ChatInterface(
   undo_btn="이전챗 삭제 ❌",
   clear_btn="전챗 삭제 💫",  
   css="style.css",
-).launch()
+)
+
+if __name__ == "__main__":
+    demo.launch()
